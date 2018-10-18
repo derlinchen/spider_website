@@ -10,7 +10,7 @@ import logging
 from spider_website.model import proxy, engine, Base, loadSession
 
 Base.metadata.create_all(engine)
-Redis = redis.StrictRedis(host='118.24.106.140', port=6379, db=0, password='derlin2008')
+Redis = redis.StrictRedis(host='*.*.*.*', port=6379, db=0, password='derlin2008')
 
 
 # item去重
