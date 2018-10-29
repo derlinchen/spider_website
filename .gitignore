@@ -1,3 +1,4 @@
 build/
 dist/
 spider_website.egg-info/
+.idea/
