@@ -3,8 +3,6 @@ import MySQLdb
 from scrapy.exceptions import DropItem
 import redis
 
-from scrapy import log
-
 import logging
 
 from spider_website.model import proxy, engine, Base, loadSession
@@ -43,7 +41,9 @@ class IpProxyPoolPipeline(object):
                 session.merge(a)
                 session.commit()
             except MySQLdb.IntegrityError, e:
-                log.msg("MySQL Error: %s" % str(e), _level=logging.WARNING)
+                logging.info("MySQL Error: %s" % str(e))
+            finally:
+                session.close()
             return item
         else:
-            log.msg("ip_port is invalid!", _level=logging.WARNING)
+            logging.info("ip_port is invalid!")

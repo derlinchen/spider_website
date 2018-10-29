@@ -3,6 +3,7 @@
 import time
 from multiprocessing import Process
 
+import logging
 import schedule
 from scrapy.crawler import CrawlerProcess
 from scrapy.utils.project import get_project_settings
@@ -15,9 +16,14 @@ from spiders.proxy_spider import ProxySpiderSpider
 def run():
     settings = get_project_settings()
 
-    session = loadSession()
-    # 取出规则表中已激活的rule
-    rules = session.query(Rule).filter(Rule.enable == 1)
+    try:
+        session = loadSession()
+        # 取出规则表中已激活的rule
+        rules = session.query(Rule).filter(Rule.enable == 1)
+    except Exception, e:
+        logging.info("Error: %s" % str(e))
+    finally:
+        session.close()
 
     process = CrawlerProcess(settings)
 

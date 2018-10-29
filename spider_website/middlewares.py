@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import random
-from scrapy import log
+
 import logging
 from scrapy.downloadermiddlewares.useragent import UserAgentMiddleware
 
@@ -31,7 +31,7 @@ class UserAgent(UserAgentMiddleware):
             # 显示当前使用的useragent
             # print "********Current UserAgent:%s************" %ua
             # 记录
-            log.msg('Current UserAgent: ' + ua, _level=logging.INFO)
+            logging.info('Current UserAgent: ' + ua)
             request.headers.setdefault('User-Agent', ua)
 
     user_agent_list = [ \
