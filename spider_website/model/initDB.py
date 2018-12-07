@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #寻找Base的所有子类，并在数据库中生成表
-from climber.model import engine, loadSession, Base
-from climber.model.rules import Rule
+from spider_website.model import engine, loadSession, Base
+from spider_website.model.rules import Rule
 
 Base.metadata.create_all(engine)
 #返回数据库会话

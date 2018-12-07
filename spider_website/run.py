@@ -31,10 +31,12 @@ def run():
         process.crawl(ProxySpiderSpider, rule)
     process.start()
 
+
 def run_spider():
     p = Process(target=run)
     p.start()
     p.join()
+
 
 if __name__ == '__main__':
     schedule.every(1).minutes.do(run_spider)

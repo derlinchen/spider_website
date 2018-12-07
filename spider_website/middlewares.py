@@ -15,7 +15,7 @@ class ProxyMiddleware(object):
     def process_request(self, request, spider):
         # 从代理IP列表中随机选择一个
         pro_adr = random.choice(self.proxyList)
-        log.msg("Current Proxy <%s>" % pro_adr, _level=logging.INFO)
+        logging.log.msg("Current Proxy <%s>" % pro_adr, _level=logging.INFO)
         request.meta['proxy'] = "http://" + pro_adr
 
 '''
